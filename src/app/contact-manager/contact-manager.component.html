@@ -1,0 +1,63 @@
+<div class="container mt-3">
+<div class="row">
+    <div class="col">
+        <p class="h3 text-danger fw-bold">NG Contacts
+            <a class="btn btn-danger btn-sm" routerLink="/contacts/add"><i class="fa-sharp fa-solid fa-plus"></i> New</a>
+        </p>
+        <p class="fst-italic">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci tempora voluptate tempore dolorum, inventore rerum est praesentium optio at dolore incidunt ea magni consequatur consequuntur? Earum cum debitis explicabo labore, inventore cupiditate repellat rem velit veniam voluptates aspernatur quas! Facilis cum voluptates quasi voluptate, nihil ab omnis vel obcaecati numquam!</p>
+    </div>
+</div>
+
+<form>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="search" name="search" [(ngModel)]="searchText" placeholder="Enter Text" class="form-control"/>
+                </div>
+
+                <div class="col-md-6">
+                    <input class="btn btn-outline-dark" type="submit" value="Search">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</div>
+
+
+<!-------Cards------->
+
+<div class="container mt-3">
+
+        <div class="row">
+            <div class="col-md-6 mt-2" *ngFor="let cont of ContArray | filter:searchText">
+            <div class="card list-group-item-danger shadow-lg">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src={{cont.PhotoURL}} class="contact-img" alt="Avtar.jpg">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <ul class="list-group">
+                                <li class="list-group-item">Name :<span class="fw-bold">{{cont.Name}}</span></li>
+                                <li class="list-group-item">Email :<span class="fw-bold">{{cont.Email}}</span></li>
+                                <li class="list-group-item">Mobile :<span class="fw-bold">{{cont.Mobile}}</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-2">
+                            <a class="btn btn-warning my-1" routerLink="/contacts/View/{{cont.id}}">
+                                <i class="fa fa-eye"></i>
+                            </a>
+                            <a class="btn btn-primary my-1" routerLink="/contacts/edit/{{cont.id}}">
+                                <i class="fa fa-pen"></i>
+                            </a>
+                            <button class="btn btn-danger my-1" (click)="contdelete(cont)"><i class="fa fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
